@@ -1,0 +1,323 @@
+
+ENTITY A: Message 1 received from Layer 5_A
+	      Incoming Message: ./myProject 0.14 0.2
+	      Incoming Message Length: 20
+
+ENTITY A: Message #1 sent to entity B
+
+ENTITY A: Message 2 received from Layer 5_A
+	      Incoming Message: 5 10 100 0 test1.txt
+	      Incoming Message Length: 20
+
+ENTITY A: Message #2 sent to entity B
+ENTITY B: Sending Message to Layer 5_B from Layer 4_B
+	      length: 20
+	      data: ./myProject 0.14 0.2
+
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 1
+	      acknum: 1
+	      checksum: 1079
+	      length: 13
+	      payload: This is a ACK
+
+ENTITY B: Sending Message to Layer 5_B from Layer 4_B
+	      length: 20
+	      data: 5 10 100 0 test1.txt
+
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1081
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: ACK is garbled, waiting for TimeOut
+
+ENTITY A: Message 3 received from Layer 5_A
+	      Incoming Message:  > output.txt
+	      Incoming Message Length: 13
+
+ENTITY A: Message #3 sent to entity B
+
+ENTITY B: Checksum from entity A garbled, sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1175
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Packet from entity B ignored, out of order
+
+ENTITY A: Timer_A Interrupt, retransmitting the following messages:
+   	      Message #1
+	      seqnum: 1
+	      acknum: 0
+	      checksum: 1474
+	      length: 20
+	      payload: ./myProject 0.14 0.2
+
+   	      Message #2
+	      seqnum: 2
+	      acknum: 0
+	      checksum: 1388
+	      length: 20
+	      payload: 5 10 100 0 test1.txt
+
+   	      Message #3
+	      seqnum: 3
+	      acknum: 0
+	      checksum: 1358
+	      length: 13
+	      payload:  > output.txt
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1174
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Packet from entity B ignored, out of order
+ENTITY B: Sending Message to Layer 5_B from Layer 4_B
+	      length: 13
+	      data:  > output.txt
+
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 3
+	      acknum: 3
+	      checksum: 1083
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Packet from entity B ignored, out of order
+
+ENTITY A: Timer_A Interrupt, retransmitting the following messages:
+   	      Message #1
+	      seqnum: 1
+	      acknum: 0
+	      checksum: 1474
+	      length: 20
+	      payload: ./myProject 0.14 0.2
+
+   	      Message #2
+	      seqnum: 2
+	      acknum: 0
+	      checksum: 1388
+	      length: 20
+	      payload: 5 10 100 0 test1.txt
+
+   	      Message #3
+	      seqnum: 3
+	      acknum: 0
+	      checksum: 1358
+	      length: 13
+	      payload:  > output.txt
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 1
+	      acknum: 1
+	      checksum: 1171
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: ACK is garbled, waiting for TimeOut
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1174
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Timer_A Interrupt, retransmitting the following messages:
+   	      Message #1
+	      seqnum: 1
+	      acknum: 0
+	      checksum: 1474
+	      length: 20
+	      payload: ./myProject 0.14 0.2
+
+   	      Message #2
+	      seqnum: 2
+	      acknum: 0
+	      checksum: 1388
+	      length: 20
+	      payload: 5 10 100 0 test1.txt
+
+   	      Message #3
+	      seqnum: 3
+	      acknum: 0
+	      checksum: 1358
+	      length: 13
+	      payload:  > output.txt
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1174
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: ACK is garbled, waiting for TimeOut
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 3
+	      acknum: 3
+	      checksum: 1177
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Packet from entity B ignored, out of order
+
+ENTITY A: Timer_A Interrupt, retransmitting the following messages:
+   	      Message #1
+	      seqnum: 1
+	      acknum: 0
+	      checksum: 1474
+	      length: 20
+	      payload: ./myProject 0.14 0.2
+
+   	      Message #2
+	      seqnum: 2
+	      acknum: 0
+	      checksum: 1388
+	      length: 20
+	      payload: 5 10 100 0 test1.txt
+
+   	      Message #3
+	      seqnum: 3
+	      acknum: 0
+	      checksum: 1358
+	      length: 13
+	      payload:  > output.txt
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1174
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Packet from entity B ignored, out of order
+
+ENTITY B: Checksum from entity A garbled, sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 3
+	      acknum: 3
+	      checksum: 1177
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: Packet from entity B ignored, out of order
+
+ENTITY A: Timer_A Interrupt, retransmitting the following messages:
+   	      Message #1
+	      seqnum: 1
+	      acknum: 0
+	      checksum: 1474
+	      length: 20
+	      payload: ./myProject 0.14 0.2
+
+   	      Message #2
+	      seqnum: 2
+	      acknum: 0
+	      checksum: 1388
+	      length: 20
+	      payload: 5 10 100 0 test1.txt
+
+   	      Message #3
+	      seqnum: 3
+	      acknum: 0
+	      checksum: 1358
+	      length: 13
+	      payload:  > output.txt
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 1
+	      acknum: 1
+	      checksum: 1171
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: ACK received from entity B
+	      seqnum: 1
+	      acknum: 1
+	      checksum: 1171
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1174
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY B: Packet out of order sending latest acked packet
+
+ENTITY B: Sending ACK from entity B to entity A
+	      seqnum: 3
+	      acknum: 3
+	      checksum: 1177
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: ACK received from entity B
+	      seqnum: 2
+	      acknum: 2
+	      checksum: 1174
+	      length: 13
+	      payload: This is a ACK
+
+
+ENTITY A: ACK received from entity B
+	      seqnum: 3
+	      acknum: 3
+	      checksum: 1177
+	      length: 13
+	      payload: This is a ACK
+
+ Simulator terminated at time 526.073608
+ after sending 3 msgs from layer5

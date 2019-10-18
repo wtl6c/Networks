@@ -1,0 +1,1452 @@
+William Trace LaCour (WTL6C)
+Justin Vaughn Javier (JTJ5GS)
+
+Networks - Routing Assignment
+4/2/19
+
+
+
+          ----- Custom Network -----
+
+
+                   Network 5
+
+           3         4          7
+      E1 ------ E4 ------- E6 ----- E11 -- \
+     /  \                 /  \               \
+  1 /    \ 6             /    \ 4             \
+   /  3   \       5     /      \     8         \
+  E0 ----  E3 -------- /        E8 ----- E9     |  1
+   \      /  \                  /              /
+  1 \  7 /    \  9           3 /              /
+     \  /      \              /              /
+      E2 ------ E5 ------- E7 ----- E10 -- /
+           2          11        7
+
+network5 = [
+	[(1, 1), (2, 1), (3, 3)],            		 # E0
+	[(0, 1), (3, 6), (4, 3)],           		 # E1
+	[(0, 1), (3, 7), (5, 2)],          	 		 # E2
+	[(0, 3), (1, 6), (2, 7), (5, 9), (6, 5)],  	 # E3
+	[(1, 3), (6, 4)],          	 		 		 # E4
+	[(2, 2), (3, 9), (7, 11)],          	 	 # E5
+	[(3, 5), (4, 4), (8, 4), (11, 7)],        	 # E6
+	[(5, 11), (8, 3), (10, 7)],			 		 # E7
+	[(6, 4), (7, 3), (9, 8)],			 		 # E8
+	[(8, 8)],	 								 # E9
+	[(7, 7), (11, 1)],					 		 # E10
+	[(6, 7), (10, 1)],	 		 				 # E11
+]
+
+
+
+          ----- Output of program using debug 3 -----
+
+C:\Users\lacou\PycharmProjects\Networks\venv\Scripts\python.exe C:/Users/lacou/PycharmProjects/Networks/Routing/project.py
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 999, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 999, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 999, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 0; contents: [1, 0, 999, 6, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 3; contents: [1, 0, 999, 6, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 4; contents: [1, 0, 999, 6, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 0; contents: [1, 999, 0, 7, 999, 2, 999, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 3; contents: [1, 999, 0, 7, 999, 2, 999, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 5; contents: [1, 999, 0, 7, 999, 2, 999, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 0; contents: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 1; contents: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 2; contents: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 5; contents: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 6; contents: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 4 -> 1; contents: [999, 3, 999, 999, 0, 999, 4, 999, 999, 999, 999, 999]
+Sending Packet 4 -> 6; contents: [999, 3, 999, 999, 0, 999, 4, 999, 999, 999, 999, 999]
+Sending Packet 5 -> 2; contents: [999, 999, 2, 9, 999, 0, 999, 11, 999, 999, 999, 999]
+Sending Packet 5 -> 3; contents: [999, 999, 2, 9, 999, 0, 999, 11, 999, 999, 999, 999]
+Sending Packet 5 -> 7; contents: [999, 999, 2, 9, 999, 0, 999, 11, 999, 999, 999, 999]
+Sending Packet 6 -> 3; contents: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 6 -> 4; contents: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 6 -> 8; contents: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 6 -> 11; contents: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 7 -> 5; contents: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 999]
+Sending Packet 7 -> 8; contents: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 999]
+Sending Packet 7 -> 10; contents: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 999]
+Sending Packet 8 -> 6; contents: [999, 999, 999, 999, 999, 999, 4, 3, 0, 8, 999, 999]
+Sending Packet 8 -> 7; contents: [999, 999, 999, 999, 999, 999, 4, 3, 0, 8, 999, 999]
+Sending Packet 8 -> 9; contents: [999, 999, 999, 999, 999, 999, 4, 3, 0, 8, 999, 999]
+Sending Packet 9 -> 8; contents: [999, 999, 999, 999, 999, 999, 999, 999, 8, 0, 999, 999]
+Sending Packet 10 -> 7; contents: [999, 999, 999, 999, 999, 999, 999, 7, 999, 999, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 999, 999, 999, 999, 999, 7, 999, 999, 0, 1]
+Sending Packet 11 -> 6; contents: [999, 999, 999, 999, 999, 999, 7, 999, 999, 999, 1, 0]
+Sending Packet 11 -> 10; contents: [999, 999, 999, 999, 999, 999, 7, 999, 999, 999, 1, 0]
+
+Handling packet at time=1.5310562750521108
+    11 -> 10  containing: [999, 999, 999, 999, 999, 999, 7, 999, 999, 999, 1, 0]
+Sending Packet 10 -> 7; contents: [999, 999, 999, 999, 999, 999, 8, 7, 999, 999, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 999, 999, 999, 999, 8, 7, 999, 999, 0, 1]
+
+Handling packet at time=1.5811176996846579
+    2 -> 3  containing: [1, 999, 0, 7, 999, 2, 999, 999, 999, 999, 999, 999]
+
+Handling packet at time=1.8074109079658902
+    6 -> 8  containing: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 8 -> 6; contents: [999, 999, 999, 9, 8, 999, 4, 3, 0, 8, 999, 11]
+Sending Packet 8 -> 7; contents: [999, 999, 999, 9, 8, 999, 4, 3, 0, 8, 999, 11]
+Sending Packet 8 -> 9; contents: [999, 999, 999, 9, 8, 999, 4, 3, 0, 8, 999, 11]
+
+Handling packet at time=2.023436692300594
+    0 -> 1  containing: [0, 1, 1, 3, 999, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 999, 999, 999, 999, 999, 999, 999]
+
+Handling packet at time=2.0761353610988174
+    1 -> 4  containing: [1, 0, 999, 6, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 4 -> 1; contents: [4, 3, 999, 9, 0, 999, 4, 999, 999, 999, 999, 999]
+Sending Packet 4 -> 6; contents: [4, 3, 999, 9, 0, 999, 4, 999, 999, 999, 999, 999]
+
+Handling packet at time=2.608360614275713
+    9 -> 8  containing: [999, 999, 999, 999, 999, 999, 999, 999, 8, 0, 999, 999]
+
+Handling packet at time=2.642594885959035
+    7 -> 5  containing: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 999]
+Sending Packet 5 -> 2; contents: [999, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 5 -> 3; contents: [999, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 5 -> 7; contents: [999, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+
+Handling packet at time=2.7324151414636395
+    8 -> 6  containing: [999, 999, 999, 999, 999, 999, 4, 3, 0, 8, 999, 999]
+Sending Packet 6 -> 3; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+Sending Packet 6 -> 4; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+Sending Packet 6 -> 8; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+Sending Packet 6 -> 11; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+
+Handling packet at time=3.4402860691804857
+    1 -> 3  containing: [1, 0, 999, 6, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 0; contents: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 1; contents: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 2; contents: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 5; contents: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 6; contents: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+
+Handling packet at time=3.6121584161719236
+    3 -> 0  containing: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 999, 12, 8, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 999, 12, 8, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 999, 12, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=3.806483587005699
+    5 -> 2  containing: [999, 999, 2, 9, 999, 0, 999, 11, 999, 999, 999, 999]
+Sending Packet 2 -> 0; contents: [1, 999, 0, 7, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 2 -> 3; contents: [1, 999, 0, 7, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 2 -> 5; contents: [1, 999, 0, 7, 999, 2, 999, 13, 999, 999, 999, 999]
+
+Handling packet at time=4.296613961147754
+    8 -> 9  containing: [999, 999, 999, 999, 999, 999, 4, 3, 0, 8, 999, 999]
+Sending Packet 9 -> 8; contents: [999, 999, 999, 999, 999, 999, 12, 11, 8, 0, 999, 999]
+
+Handling packet at time=4.346355074324755
+    11 -> 6  containing: [999, 999, 999, 999, 999, 999, 7, 999, 999, 999, 1, 0]
+Sending Packet 6 -> 3; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 4; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 8; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 11; contents: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=4.396594980247796
+    7 -> 8  containing: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 999]
+Sending Packet 8 -> 6; contents: [999, 999, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 7; contents: [999, 999, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 9; contents: [999, 999, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=4.500654109959813
+    5 -> 3  containing: [999, 999, 2, 9, 999, 0, 999, 11, 999, 999, 999, 999]
+Sending Packet 3 -> 0; contents: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 1; contents: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 2; contents: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 5; contents: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 6; contents: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=4.834932506993221
+    2 -> 5  containing: [1, 999, 0, 7, 999, 2, 999, 999, 999, 999, 999, 999]
+Sending Packet 5 -> 2; contents: [3, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 5 -> 3; contents: [3, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 5 -> 7; contents: [3, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+
+Handling packet at time=5.010391301584266
+    4 -> 1  containing: [999, 3, 999, 999, 0, 999, 4, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 999, 7, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 999, 7, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 999, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=5.204491274311821
+    10 -> 11  containing: [999, 999, 999, 999, 999, 999, 999, 7, 999, 999, 0, 1]
+Sending Packet 11 -> 6; contents: [999, 999, 999, 999, 999, 999, 7, 8, 999, 999, 1, 0]
+Sending Packet 11 -> 10; contents: [999, 999, 999, 999, 999, 999, 7, 8, 999, 999, 1, 0]
+
+Handling packet at time=5.497417723463445
+    0 -> 3  containing: [0, 1, 1, 3, 999, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=5.886250263234353
+    10 -> 7  containing: [999, 999, 999, 999, 999, 999, 999, 7, 999, 999, 0, 1]
+Sending Packet 7 -> 5; contents: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 8]
+Sending Packet 7 -> 8; contents: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 8]
+Sending Packet 7 -> 10; contents: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 8]
+
+Handling packet at time=6.07886296049684
+    8 -> 6  containing: [999, 999, 999, 9, 8, 999, 4, 3, 0, 8, 999, 11]
+
+Handling packet at time=6.208476872334997
+    2 -> 5  containing: [1, 999, 0, 7, 999, 2, 999, 13, 999, 999, 999, 999]
+
+Handling packet at time=6.228776251582351
+    7 -> 10  containing: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 999]
+Sending Packet 10 -> 7; contents: [999, 999, 999, 999, 999, 18, 8, 7, 10, 999, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 999, 999, 999, 18, 8, 7, 10, 999, 0, 1]
+
+Handling packet at time=6.27379902721616
+    1 -> 0  containing: [1, 0, 999, 6, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 12, 8, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 12, 8, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 12, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=6.825724624618491
+    6 -> 3  containing: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+
+Handling packet at time=7.17698813261088
+    11 -> 10  containing: [999, 999, 999, 999, 999, 999, 7, 8, 999, 999, 1, 0]
+
+Handling packet at time=7.210371234840452
+    4 -> 1  containing: [4, 3, 999, 9, 0, 999, 4, 999, 999, 999, 999, 999]
+
+Handling packet at time=7.249077746959876
+    8 -> 9  containing: [999, 999, 999, 9, 8, 999, 4, 3, 0, 8, 999, 11]
+Sending Packet 9 -> 8; contents: [999, 999, 999, 17, 16, 999, 12, 11, 8, 0, 999, 19]
+
+Handling packet at time=7.419452924642162
+    0 -> 1  containing: [0, 1, 1, 3, 999, 12, 8, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 13, 7, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 13, 7, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 13, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=7.565762633597709
+    2 -> 0  containing: [1, 999, 0, 7, 999, 2, 999, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 3, 8, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 3, 8, 999, 999, 999, 999, 999]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 3, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=7.670063276240588
+    3 -> 5  containing: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 5 -> 2; contents: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 999]
+Sending Packet 5 -> 3; contents: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 999]
+Sending Packet 5 -> 7; contents: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 999]
+
+Handling packet at time=7.754420069493568
+    0 -> 2  containing: [0, 1, 1, 3, 999, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 999, 2, 999, 13, 999, 999, 999, 999]
+
+Handling packet at time=7.808363351432642
+    7 -> 5  containing: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 8]
+Sending Packet 5 -> 2; contents: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 3; contents: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 7; contents: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=7.927002955409712
+    3 -> 2  containing: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 999, 2, 9, 13, 999, 999, 999, 999]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 999, 2, 9, 13, 999, 999, 999, 999]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 999, 2, 9, 13, 999, 999, 999, 999]
+
+Handling packet at time=7.973938471522102
+    6 -> 11  containing: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 11 -> 6; contents: [999, 999, 999, 12, 11, 999, 7, 8, 11, 999, 1, 0]
+Sending Packet 11 -> 10; contents: [999, 999, 999, 12, 11, 999, 7, 8, 11, 999, 1, 0]
+
+Handling packet at time=8.218958550715849
+    2 -> 3  containing: [1, 999, 0, 7, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+
+Handling packet at time=8.256642179022617
+    7 -> 8  containing: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 8]
+
+Handling packet at time=8.311158690718935
+    4 -> 6  containing: [999, 3, 999, 999, 0, 999, 4, 999, 999, 999, 999, 999]
+Sending Packet 6 -> 3; contents: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 4; contents: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 8; contents: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 11; contents: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=8.518701522080374
+    0 -> 3  containing: [0, 1, 1, 3, 999, 12, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=8.53386875534059
+    6 -> 4  containing: [999, 999, 999, 5, 4, 999, 0, 999, 4, 999, 999, 7]
+Sending Packet 4 -> 1; contents: [4, 3, 999, 9, 0, 999, 4, 999, 8, 999, 999, 11]
+Sending Packet 4 -> 6; contents: [4, 3, 999, 9, 0, 999, 4, 999, 8, 999, 999, 11]
+
+Handling packet at time=8.718950490902396
+    8 -> 9  containing: [999, 999, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 9 -> 8; contents: [999, 999, 999, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=8.898766213120172
+    8 -> 7  containing: [999, 999, 999, 999, 999, 999, 4, 3, 0, 8, 999, 999]
+Sending Packet 7 -> 5; contents: [999, 999, 999, 999, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [999, 999, 999, 999, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [999, 999, 999, 999, 999, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=9.021771381890382
+    1 -> 4  containing: [1, 0, 2, 4, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 4 -> 1; contents: [4, 3, 5, 7, 0, 999, 4, 999, 8, 999, 999, 11]
+Sending Packet 4 -> 6; contents: [4, 3, 5, 7, 0, 999, 4, 999, 8, 999, 999, 11]
+
+Handling packet at time=9.074340334586275
+    9 -> 8  containing: [999, 999, 999, 999, 999, 999, 12, 11, 8, 0, 999, 999]
+
+Handling packet at time=9.173960073686564
+    6 -> 8  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+
+Handling packet at time=9.17945901396916
+    5 -> 7  containing: [999, 999, 2, 9, 999, 0, 999, 11, 999, 999, 999, 999]
+Sending Packet 7 -> 5; contents: [999, 999, 13, 20, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [999, 999, 13, 20, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [999, 999, 13, 20, 999, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=9.279514816124072
+    2 -> 5  containing: [1, 2, 0, 4, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 5 -> 2; contents: [3, 4, 2, 6, 999, 0, 14, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 3; contents: [3, 4, 2, 6, 999, 0, 14, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 7; contents: [3, 4, 2, 6, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=9.802020067535121
+    3 -> 6  containing: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 6 -> 3; contents: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 4; contents: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 8; contents: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 11; contents: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=9.923504266928859
+    3 -> 1  containing: [3, 6, 7, 0, 999, 9, 5, 999, 999, 999, 999, 999]
+
+Handling packet at time=9.931864188281322
+    11 -> 10  containing: [999, 999, 999, 12, 11, 999, 7, 8, 11, 999, 1, 0]
+Sending Packet 10 -> 7; contents: [999, 999, 999, 13, 12, 18, 8, 7, 10, 999, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 999, 13, 12, 18, 8, 7, 10, 999, 0, 1]
+
+Handling packet at time=10.73197532214633
+    2 -> 5  containing: [1, 2, 0, 4, 999, 2, 9, 13, 999, 999, 999, 999]
+Sending Packet 5 -> 2; contents: [3, 4, 2, 6, 999, 0, 11, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 3; contents: [3, 4, 2, 6, 999, 0, 11, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 7; contents: [3, 4, 2, 6, 999, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=10.84559405561595
+    5 -> 3  containing: [999, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+
+Handling packet at time=10.86474334036136
+    3 -> 6  containing: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+
+Handling packet at time=11.106919472881714
+    10 -> 11  containing: [999, 999, 999, 999, 999, 999, 8, 7, 999, 999, 0, 1]
+
+Handling packet at time=11.248716152659215
+    2 -> 3  containing: [1, 2, 0, 4, 999, 2, 999, 13, 999, 999, 999, 999]
+
+Handling packet at time=11.328427617353778
+    0 -> 2  containing: [0, 1, 1, 3, 999, 12, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=11.377550694398082
+    6 -> 3  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=11.649360159710756
+    8 -> 7  containing: [999, 999, 999, 9, 8, 999, 4, 3, 0, 8, 999, 11]
+Sending Packet 7 -> 5; contents: [999, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [999, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [999, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=11.896780149651851
+    3 -> 0  containing: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+
+Handling packet at time=12.130217591570709
+    1 -> 3  containing: [1, 0, 2, 4, 3, 999, 999, 999, 999, 999, 999, 999]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=12.210817727488461
+    3 -> 6  containing: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=12.416561087589919
+    3 -> 5  containing: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 5 -> 2; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 3; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 999, 18, 19]
+Sending Packet 5 -> 7; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=12.471451347311113
+    4 -> 6  containing: [4, 3, 999, 9, 0, 999, 4, 999, 999, 999, 999, 999]
+
+Handling packet at time=12.842911004014404
+    1 -> 0  containing: [1, 0, 2, 4, 3, 999, 999, 999, 999, 999, 999, 999]
+
+Handling packet at time=12.896891371931908
+    10 -> 7  containing: [999, 999, 999, 999, 999, 999, 8, 7, 999, 999, 0, 1]
+
+Handling packet at time=13.236616089451305
+    11 -> 6  containing: [999, 999, 999, 999, 999, 999, 7, 8, 999, 999, 1, 0]
+
+Handling packet at time=13.243968893410722
+    5 -> 2  containing: [999, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 999, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 999, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 999, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=13.30291727086637
+    6 -> 11  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+Sending Packet 11 -> 6; contents: [999, 999, 999, 12, 11, 999, 7, 8, 11, 19, 1, 0]
+Sending Packet 11 -> 10; contents: [999, 999, 999, 12, 11, 999, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=13.309058056338934
+    5 -> 3  containing: [3, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+
+Handling packet at time=13.7828407191587
+    7 -> 8  containing: [999, 999, 999, 999, 999, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=13.794188393939859
+    9 -> 8  containing: [999, 999, 999, 17, 16, 999, 12, 11, 8, 0, 999, 19]
+
+Handling packet at time=13.998928206206529
+    0 -> 3  containing: [0, 1, 1, 3, 4, 12, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=14.059844714266735
+    3 -> 2  containing: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 13, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 13, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 13, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=14.234840004193867
+    8 -> 6  containing: [999, 999, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=14.274810332235258
+    1 -> 0  containing: [1, 0, 2, 4, 3, 999, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=14.307229308214024
+    6 -> 8  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=14.394196211430115
+    4 -> 6  containing: [4, 3, 999, 9, 0, 999, 4, 999, 8, 999, 999, 11]
+
+Handling packet at time=14.52789981178575
+    8 -> 7  containing: [999, 999, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=14.757348847251581
+    4 -> 1  containing: [4, 3, 999, 9, 0, 999, 4, 999, 8, 999, 999, 11]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 13, 7, 999, 11, 999, 999, 14]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 13, 7, 999, 11, 999, 999, 14]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 13, 7, 999, 11, 999, 999, 14]
+
+Handling packet at time=14.785128190286647
+    5 -> 7  containing: [999, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+
+Handling packet at time=14.804923204494461
+    11 -> 6  containing: [999, 999, 999, 12, 11, 999, 7, 8, 11, 999, 1, 0]
+
+Handling packet at time=15.002384024970258
+    1 -> 3  containing: [1, 0, 2, 4, 3, 999, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=15.309349044748634
+    7 -> 10  containing: [999, 999, 999, 999, 999, 11, 999, 0, 3, 999, 7, 8]
+
+Handling packet at time=15.885717775869038
+    3 -> 6  containing: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+Sending Packet 6 -> 3; contents: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 4; contents: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 8; contents: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 11; contents: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=15.948299467448647
+    7 -> 5  containing: [999, 999, 999, 999, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 5 -> 2; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 19]
+Sending Packet 5 -> 3; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 19]
+Sending Packet 5 -> 7; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 19]
+
+Handling packet at time=16.112423345516714
+    3 -> 1  containing: [3, 6, 7, 0, 9, 9, 5, 999, 999, 999, 999, 999]
+
+Handling packet at time=16.347820281297505
+    2 -> 0  containing: [1, 999, 0, 7, 999, 2, 999, 13, 999, 999, 999, 999]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 3, 8, 14, 999, 999, 999, 999]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 3, 8, 14, 999, 999, 999, 999]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 3, 8, 14, 999, 999, 999, 999]
+
+Handling packet at time=16.543228024549414
+    0 -> 1  containing: [0, 1, 1, 3, 4, 12, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=16.547607944112723
+    4 -> 1  containing: [4, 3, 5, 7, 0, 999, 4, 999, 8, 999, 999, 11]
+
+Handling packet at time=17.058123639925235
+    5 -> 3  containing: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 999]
+
+Handling packet at time=17.515003912917326
+    1 -> 3  containing: [1, 0, 2, 4, 3, 13, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=17.63921557738969
+    6 -> 4  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 999, 7]
+Sending Packet 4 -> 1; contents: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 999, 11]
+Sending Packet 4 -> 6; contents: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 999, 11]
+
+Handling packet at time=17.68652168475451
+    11 -> 6  containing: [999, 999, 999, 12, 11, 999, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=18.23131072285301
+    0 -> 2  containing: [0, 1, 1, 3, 4, 12, 8, 999, 999, 999, 999, 999]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 5, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 5, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 5, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=18.263259733147045
+    2 -> 3  containing: [1, 2, 0, 4, 999, 2, 9, 13, 999, 999, 999, 999]
+
+Handling packet at time=18.28050628517719
+    0 -> 1  containing: [0, 1, 1, 3, 4, 3, 8, 999, 999, 999, 999, 999]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 4, 7, 999, 11, 999, 999, 14]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 4, 7, 999, 11, 999, 999, 14]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 4, 7, 999, 11, 999, 999, 14]
+
+Handling packet at time=18.638033067077814
+    3 -> 5  containing: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=18.795856819828998
+    1 -> 4  containing: [1, 0, 2, 4, 3, 999, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=18.79993535616603
+    10 -> 11  containing: [999, 999, 999, 999, 999, 18, 8, 7, 10, 999, 0, 1]
+Sending Packet 11 -> 6; contents: [999, 999, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 11 -> 10; contents: [999, 999, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=19.31618664033108
+    5 -> 7  containing: [3, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+Sending Packet 7 -> 5; contents: [14, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [14, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [14, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=19.942968817755357
+    6 -> 4  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 4 -> 1; contents: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 12, 11]
+Sending Packet 4 -> 6; contents: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=20.005361726257902
+    4 -> 1  containing: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 999, 11]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 999, 14]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 999, 14]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 999, 14]
+
+Handling packet at time=20.108308146449104
+    3 -> 1  containing: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=20.223011239928873
+    2 -> 3  containing: [1, 2, 0, 4, 999, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=20.321998952366755
+    3 -> 2  containing: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=20.356900861421042
+    2 -> 0  containing: [1, 2, 0, 4, 999, 2, 999, 13, 999, 999, 999, 999]
+
+Handling packet at time=20.41325338458687
+    6 -> 3  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 3 -> 0; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+Sending Packet 3 -> 1; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+Sending Packet 3 -> 2; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+Sending Packet 3 -> 5; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+Sending Packet 3 -> 6; contents: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+
+Handling packet at time=20.4885942470855
+    10 -> 7  containing: [999, 999, 999, 999, 999, 18, 8, 7, 10, 999, 0, 1]
+
+Handling packet at time=20.581992547801452
+    3 -> 5  containing: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=20.72235215604202
+    5 -> 7  containing: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 999]
+Sending Packet 7 -> 5; contents: [14, 26, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [14, 26, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [14, 26, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=21.20646777945459
+    6 -> 8  containing: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 8 -> 6; contents: [999, 11, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 7; contents: [999, 11, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 9; contents: [999, 11, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=21.510351093879034
+    9 -> 8  containing: [999, 999, 999, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=21.577361484849682
+    11 -> 10  containing: [999, 999, 999, 12, 11, 999, 7, 8, 11, 19, 1, 0]
+Sending Packet 10 -> 7; contents: [999, 999, 999, 13, 12, 18, 8, 7, 10, 20, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 999, 13, 12, 18, 8, 7, 10, 20, 0, 1]
+
+Handling packet at time=21.7016783617012
+    7 -> 8  containing: [999, 999, 13, 20, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 8 -> 6; contents: [999, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 7; contents: [999, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 9; contents: [999, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=21.81396325462553
+    3 -> 0  containing: [3, 6, 7, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=21.873795451970516
+    5 -> 7  containing: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=22.318874605678705
+    6 -> 3  containing: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=22.324680401771086
+    0 -> 3  containing: [0, 1, 1, 3, 4, 3, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=22.577287349523893
+    6 -> 11  containing: [999, 999, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=22.578585632619227
+    10 -> 11  containing: [999, 999, 999, 13, 12, 18, 8, 7, 10, 999, 0, 1]
+
+Handling packet at time=23.07597618720696
+    5 -> 2  containing: [3, 999, 2, 9, 999, 0, 999, 11, 14, 999, 18, 999]
+
+Handling packet at time=23.079548796785748
+    2 -> 5  containing: [1, 2, 0, 4, 999, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=23.41657625251052
+    2 -> 0  containing: [1, 2, 0, 4, 999, 2, 9, 13, 999, 999, 999, 999]
+
+Handling packet at time=23.469654948239743
+    3 -> 6  containing: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+
+Handling packet at time=23.88348195041802
+    6 -> 11  containing: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+Sending Packet 11 -> 6; contents: [999, 14, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 11 -> 10; contents: [999, 14, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=24.045656179035312
+    4 -> 6  containing: [4, 3, 5, 7, 0, 999, 4, 999, 8, 999, 999, 11]
+
+Handling packet at time=24.184476601095515
+    7 -> 10  containing: [999, 999, 999, 999, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 10 -> 7; contents: [999, 999, 999, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 999, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=24.249622205805387
+    1 -> 0  containing: [1, 0, 2, 4, 3, 13, 7, 999, 999, 999, 999, 999]
+
+Handling packet at time=24.428087210407114
+    3 -> 5  containing: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+Sending Packet 5 -> 2; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 18]
+Sending Packet 5 -> 3; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 18]
+Sending Packet 5 -> 7; contents: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=24.7105572138201
+    6 -> 8  containing: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 8 -> 6; contents: [12, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 7; contents: [12, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 9; contents: [12, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=24.732942222203235
+    3 -> 0  containing: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=24.9475475385842
+    7 -> 5  containing: [999, 999, 13, 20, 999, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=25.232821564306775
+    0 -> 2  containing: [0, 1, 1, 3, 4, 3, 8, 999, 999, 999, 999, 999]
+
+Handling packet at time=25.37847325135697
+    5 -> 3  containing: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=25.580696702691853
+    1 -> 4  containing: [1, 0, 2, 4, 3, 13, 7, 999, 999, 999, 999, 999]
+Sending Packet 4 -> 1; contents: [4, 3, 5, 7, 0, 16, 4, 11, 8, 16, 12, 11]
+Sending Packet 4 -> 6; contents: [4, 3, 5, 7, 0, 16, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=25.62148798365505
+    10 -> 11  containing: [999, 999, 999, 13, 12, 18, 8, 7, 10, 20, 0, 1]
+
+Handling packet at time=25.679963671732768
+    2 -> 3  containing: [1, 2, 0, 4, 13, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=25.721737788385617
+    2 -> 5  containing: [1, 2, 0, 4, 13, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=25.884252061457175
+    1 -> 3  containing: [1, 0, 2, 4, 3, 13, 7, 999, 11, 999, 999, 14]
+
+Handling packet at time=25.914043635047925
+    1 -> 0  containing: [1, 0, 2, 4, 3, 13, 7, 999, 11, 999, 999, 14]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 999, 15]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 999, 15]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 999, 15]
+
+Handling packet at time=26.125888945754497
+    11 -> 10  containing: [999, 999, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=26.64194265173964
+    4 -> 1  containing: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 12, 11]
+Sending Packet 1 -> 0; contents: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 15, 14]
+Sending Packet 1 -> 3; contents: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 15, 14]
+Sending Packet 1 -> 4; contents: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 15, 14]
+
+Handling packet at time=26.946697472789573
+    7 -> 8  containing: [999, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=27.18189529032498
+    5 -> 7  containing: [3, 4, 2, 6, 999, 0, 14, 11, 14, 999, 18, 19]
+Sending Packet 7 -> 5; contents: [14, 15, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [14, 15, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [14, 15, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=27.28341987493025
+    6 -> 3  containing: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=27.43892680182617
+    6 -> 4  containing: [999, 7, 999, 5, 4, 999, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=27.715746436293312
+    8 -> 6  containing: [999, 11, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=27.78935381631322
+    0 -> 1  containing: [0, 1, 1, 3, 4, 3, 8, 14, 999, 999, 999, 999]
+
+Handling packet at time=28.033581770860607
+    11 -> 6  containing: [999, 999, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=28.263885073535555
+    7 -> 5  containing: [999, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=28.319959309270665
+    3 -> 2  containing: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=28.60316915436343
+    8 -> 9  containing: [999, 11, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 9 -> 8; contents: [999, 19, 999, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=28.635219411134116
+    3 -> 6  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+Sending Packet 6 -> 3; contents: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 4; contents: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 8; contents: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+Sending Packet 6 -> 11; contents: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=28.650726045253563
+    0 -> 2  containing: [0, 1, 1, 3, 4, 3, 8, 14, 999, 999, 999, 999]
+
+Handling packet at time=28.85860917980634
+    2 -> 5  containing: [1, 2, 0, 4, 5, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 5 -> 2; contents: [3, 4, 2, 6, 7, 0, 11, 11, 14, 22, 18, 18]
+Sending Packet 5 -> 3; contents: [3, 4, 2, 6, 7, 0, 11, 11, 14, 22, 18, 18]
+Sending Packet 5 -> 7; contents: [3, 4, 2, 6, 7, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=29.09440237763087
+    3 -> 1  containing: [3, 4, 4, 0, 9, 9, 5, 20, 999, 999, 999, 999]
+
+Handling packet at time=29.11393309363602
+    8 -> 6  containing: [999, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=29.33464509057772
+    10 -> 7  containing: [999, 999, 999, 13, 12, 18, 8, 7, 10, 999, 0, 1]
+
+Handling packet at time=29.5876566272375
+    7 -> 5  containing: [14, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=29.599265209457432
+    3 -> 5  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+
+Handling packet at time=29.723933376814088
+    1 -> 4  containing: [1, 0, 2, 4, 3, 13, 7, 999, 11, 999, 999, 14]
+
+Handling packet at time=29.731100810808037
+    10 -> 11  containing: [999, 999, 999, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=29.932181514330754
+    4 -> 6  containing: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 999, 11]
+
+Handling packet at time=30.067677221798526
+    3 -> 6  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+
+Handling packet at time=30.10749878007877
+    8 -> 7  containing: [999, 11, 999, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 7 -> 5; contents: [14, 14, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 8; contents: [14, 14, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 7 -> 10; contents: [14, 14, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=30.225312680499783
+    0 -> 3  containing: [0, 1, 1, 3, 4, 3, 8, 14, 999, 999, 999, 999]
+
+Handling packet at time=30.734395485834632
+    5 -> 3  containing: [3, 4, 2, 6, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=31.39467374563375
+    2 -> 0  containing: [1, 2, 0, 4, 999, 2, 9, 13, 16, 999, 20, 999]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 21, 15]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 21, 15]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 21, 15]
+
+Handling packet at time=31.670342906721963
+    5 -> 2  containing: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 999]
+
+Handling packet at time=31.924556401399855
+    1 -> 3  containing: [1, 0, 2, 4, 3, 4, 7, 999, 11, 999, 999, 14]
+
+Handling packet at time=32.08113677912554
+    7 -> 10  containing: [999, 999, 13, 20, 999, 11, 7, 0, 3, 11, 7, 8]
+Sending Packet 10 -> 7; contents: [999, 999, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 999, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=32.105282518173325
+    6 -> 11  containing: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 11 -> 6; contents: [15, 14, 19, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 11 -> 10; contents: [15, 14, 19, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=32.12215186330554
+    8 -> 6  containing: [12, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=32.36714640531148
+    3 -> 2  containing: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 999, 20, 16]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 999, 20, 16]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 999, 20, 16]
+
+Handling packet at time=32.67499862414137
+    4 -> 1  containing: [4, 3, 5, 7, 0, 16, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=32.75550761603715
+    1 -> 0  containing: [1, 0, 2, 4, 3, 4, 7, 999, 11, 999, 999, 14]
+
+Handling packet at time=33.24592775780189
+    0 -> 1  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 999, 15]
+
+Handling packet at time=33.5484073920848
+    7 -> 5  containing: [14, 26, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=33.58633605175012
+    0 -> 3  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 999, 15]
+
+Handling packet at time=33.612071959272384
+    8 -> 9  containing: [999, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 9 -> 8; contents: [999, 19, 24, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=33.74528695310377
+    11 -> 6  containing: [999, 14, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=33.95683092587373
+    6 -> 8  containing: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 8 -> 6; contents: [12, 11, 13, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 7; contents: [12, 11, 13, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 8 -> 9; contents: [12, 11, 13, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=33.95921103220107
+    1 -> 0  containing: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 999, 14]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 21, 15]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 21, 15]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 21, 15]
+
+Handling packet at time=33.96391687642458
+    3 -> 0  containing: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+
+Handling packet at time=34.20775258076267
+    2 -> 3  containing: [1, 2, 0, 4, 5, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=34.8621292237481
+    5 -> 3  containing: [3, 4, 2, 6, 999, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=34.942671347588046
+    5 -> 2  containing: [3, 15, 2, 9, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=34.98636859534777
+    11 -> 10  containing: [999, 14, 999, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 10 -> 7; contents: [999, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+Sending Packet 10 -> 11; contents: [999, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=35.015918487519144
+    6 -> 3  containing: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=35.027585945308765
+    1 -> 3  containing: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 999, 14]
+
+Handling packet at time=35.08439737613586
+    1 -> 4  containing: [1, 0, 2, 4, 3, 4, 7, 999, 11, 999, 999, 14]
+Sending Packet 4 -> 1; contents: [4, 3, 5, 7, 0, 7, 4, 11, 8, 16, 12, 11]
+Sending Packet 4 -> 6; contents: [4, 3, 5, 7, 0, 7, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=35.177608373014536
+    0 -> 1  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 21, 15]
+
+Handling packet at time=35.22853252074065
+    10 -> 7  containing: [999, 999, 999, 13, 12, 18, 8, 7, 10, 20, 0, 1]
+
+Handling packet at time=35.31033156396068
+    7 -> 8  containing: [14, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=35.330686273510345
+    2 -> 0  containing: [1, 2, 0, 4, 13, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=35.371801893327195
+    0 -> 3  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 21, 15]
+
+Handling packet at time=35.68594046418972
+    0 -> 2  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 999, 15]
+
+Handling packet at time=35.873255136099964
+    8 -> 9  containing: [12, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 9 -> 8; contents: [20, 19, 24, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=35.88855615461824
+    9 -> 8  containing: [999, 19, 999, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=36.08553341812124
+    7 -> 5  containing: [14, 15, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=36.22556602405687
+    3 -> 0  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+
+Handling packet at time=36.391507299789225
+    5 -> 7  containing: [3, 4, 2, 6, 999, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=36.622029697414426
+    11 -> 10  containing: [15, 14, 19, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 10 -> 7; contents: [16, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+Sending Packet 10 -> 11; contents: [16, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=36.63201992431192
+    6 -> 4  containing: [8, 7, 12, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=36.96706827081166
+    3 -> 1  containing: [3, 4, 4, 0, 9, 9, 5, 20, 9, 999, 999, 12]
+
+Handling packet at time=37.021733199787576
+    3 -> 2  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+
+Handling packet at time=37.22650811915682
+    6 -> 11  containing: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+Sending Packet 11 -> 6; contents: [15, 14, 16, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 11 -> 10; contents: [15, 14, 16, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=37.31314413946395
+    8 -> 7  containing: [999, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=38.0323683541878
+    1 -> 3  containing: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 15, 14]
+
+Handling packet at time=38.06902161596204
+    3 -> 6  containing: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=38.14066707457663
+    3 -> 5  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+
+Handling packet at time=38.403774218873345
+    7 -> 10  containing: [999, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=38.466537430084045
+    3 -> 2  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+
+Handling packet at time=38.52575232216869
+    7 -> 8  containing: [14, 26, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=38.634361814434655
+    2 -> 5  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 999, 20, 16]
+
+Handling packet at time=38.856341410848145
+    1 -> 0  containing: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 15, 14]
+Sending Packet 0 -> 1; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 16, 15]
+Sending Packet 0 -> 2; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 16, 15]
+Sending Packet 0 -> 3; contents: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 16, 15]
+
+Handling packet at time=39.131553173779764
+    6 -> 3  containing: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=39.7819074367767
+    10 -> 11  containing: [999, 999, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=39.822529191408094
+    7 -> 10  containing: [14, 999, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=39.889913660288904
+    4 -> 6  containing: [4, 3, 5, 7, 0, 999, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=39.91366445347163
+    0 -> 2  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 999, 21, 15]
+
+Handling packet at time=40.245877087233616
+    6 -> 8  containing: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=40.49551505886713
+    0 -> 1  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 21, 15]
+
+Handling packet at time=40.57527922731952
+    0 -> 3  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 21, 15]
+
+Handling packet at time=40.867762100843386
+    3 -> 0  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+
+Handling packet at time=41.33461842569109
+    1 -> 4  containing: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 999, 14]
+
+Handling packet at time=41.59632797291365
+    7 -> 8  containing: [14, 15, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=41.60966534371546
+    0 -> 1  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 16, 15]
+
+Handling packet at time=42.252944565930385
+    9 -> 8  containing: [999, 19, 24, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=42.50678045330641
+    6 -> 4  containing: [8, 7, 9, 5, 4, 14, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=42.51407468783611
+    4 -> 6  containing: [4, 3, 5, 7, 0, 16, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=42.739807749126676
+    2 -> 0  containing: [1, 2, 0, 4, 5, 2, 9, 13, 16, 999, 20, 999]
+
+Handling packet at time=43.06768007247955
+    8 -> 6  containing: [12, 11, 13, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=43.28029618440452
+    3 -> 2  containing: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 20, 16]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 20, 16]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 20, 16]
+
+Handling packet at time=43.35639115041856
+    7 -> 5  containing: [14, 14, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=43.467484951758664
+    11 -> 6  containing: [15, 14, 19, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=43.55031029659964
+    9 -> 8  containing: [20, 19, 24, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=43.691042477418726
+    2 -> 3  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 999, 20, 16]
+
+Handling packet at time=43.85766804951837
+    5 -> 3  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=44.05077770979664
+    7 -> 10  containing: [14, 26, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=44.20411124113232
+    10 -> 7  containing: [999, 999, 999, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=44.31160445735914
+    8 -> 9  containing: [12, 11, 13, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+Sending Packet 9 -> 8; contents: [20, 19, 21, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=44.451125450591306
+    5 -> 2  containing: [3, 4, 2, 6, 999, 0, 14, 11, 14, 999, 18, 19]
+
+Handling packet at time=44.49509120825706
+    3 -> 1  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 999, 12]
+
+Handling packet at time=44.720218187299906
+    8 -> 7  containing: [12, 11, 16, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=44.850145858484254
+    3 -> 6  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=44.99154311492495
+    4 -> 1  containing: [4, 3, 5, 7, 0, 7, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=45.283051628792
+    11 -> 6  containing: [15, 14, 16, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=45.3564171045532
+    10 -> 11  containing: [999, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=45.366208090154494
+    3 -> 5  containing: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=45.38009104408732
+    5 -> 7  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=45.51061371373338
+    0 -> 3  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 16, 15]
+
+Handling packet at time=45.549790244843024
+    6 -> 11  containing: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+Sending Packet 11 -> 6; contents: [15, 14, 16, 12, 11, 18, 7, 8, 11, 19, 1, 0]
+Sending Packet 11 -> 10; contents: [15, 14, 16, 12, 11, 18, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=45.704493812072755
+    0 -> 2  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 21, 15]
+
+Handling packet at time=46.017329040833346
+    11 -> 10  containing: [15, 14, 16, 12, 11, 19, 7, 8, 11, 19, 1, 0]
+Sending Packet 10 -> 7; contents: [16, 15, 17, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+Sending Packet 10 -> 11; contents: [16, 15, 17, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=46.08282649330157
+    3 -> 2  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=47.01794273997984
+    8 -> 7  containing: [12, 11, 13, 9, 8, 14, 4, 3, 0, 8, 10, 11]
+
+Handling packet at time=47.1205411090031
+    0 -> 2  containing: [0, 1, 1, 3, 4, 3, 8, 14, 12, 20, 16, 15]
+Sending Packet 2 -> 0; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 17, 16]
+Sending Packet 2 -> 3; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 17, 16]
+Sending Packet 2 -> 5; contents: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 17, 16]
+
+Handling packet at time=48.44949907413334
+    6 -> 4  containing: [8, 7, 9, 5, 4, 11, 0, 7, 4, 12, 8, 7]
+
+Handling packet at time=49.072500901105435
+    1 -> 4  containing: [1, 0, 2, 4, 3, 4, 7, 14, 11, 19, 15, 14]
+
+Handling packet at time=49.309187864716336
+    11 -> 10  containing: [15, 14, 16, 12, 11, 18, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=49.35092096259747
+    9 -> 8  containing: [20, 19, 21, 17, 16, 22, 12, 11, 8, 0, 18, 19]
+
+Handling packet at time=49.377509461213236
+    5 -> 3  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 19]
+
+Handling packet at time=49.58672435491812
+    10 -> 7  containing: [999, 999, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=49.92291803378892
+    5 -> 2  containing: [3, 4, 2, 6, 999, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=50.10269308695781
+    10 -> 11  containing: [16, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=50.17695695350172
+    7 -> 8  containing: [14, 14, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=50.2733993040438
+    3 -> 0  containing: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=50.41770741260976
+    2 -> 0  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 999, 20, 16]
+
+Handling packet at time=50.4502788289542
+    3 -> 6  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+
+Handling packet at time=50.54751768997264
+    3 -> 5  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=50.746193837016314
+    5 -> 3  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=51.09250317185643
+    10 -> 7  containing: [999, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=51.17640213271656
+    2 -> 3  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 20, 16]
+
+Handling packet at time=51.375741739101024
+    4 -> 6  containing: [4, 3, 5, 7, 0, 7, 4, 11, 8, 16, 12, 11]
+
+Handling packet at time=51.594486631627895
+    2 -> 0  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 20, 16]
+
+Handling packet at time=51.73847176423324
+    2 -> 5  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 20, 16]
+
+Handling packet at time=52.15419444335178
+    10 -> 11  containing: [16, 15, 17, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=52.26524525791511
+    7 -> 10  containing: [14, 15, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=52.38433048086078
+    5 -> 7  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 19]
+
+Handling packet at time=52.52462635814459
+    11 -> 6  containing: [15, 14, 16, 12, 11, 18, 7, 8, 11, 19, 1, 0]
+
+Handling packet at time=52.60854816885596
+    3 -> 1  containing: [3, 4, 4, 0, 9, 6, 5, 17, 9, 999, 24, 12]
+
+Handling packet at time=52.89117663808535
+    3 -> 2  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+
+Handling packet at time=53.22242996715117
+    2 -> 5  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 17, 16]
+
+Handling packet at time=53.39661205476125
+    5 -> 7  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=54.177450896968764
+    5 -> 2  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 999, 18, 19]
+
+Handling packet at time=55.42969194357799
+    7 -> 10  containing: [14, 14, 13, 12, 11, 11, 7, 0, 3, 11, 7, 8]
+
+Handling packet at time=56.69851977768528
+    5 -> 7  containing: [3, 4, 2, 6, 7, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=56.940223975517185
+    2 -> 3  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 17, 16]
+
+Handling packet at time=57.080065231469305
+    3 -> 0  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=57.731444067540686
+    2 -> 0  containing: [1, 2, 0, 4, 5, 2, 9, 13, 13, 21, 17, 16]
+
+Handling packet at time=58.31548305463743
+    5 -> 3  containing: [3, 4, 2, 6, 7, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=58.72151962641077
+    3 -> 5  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+
+Handling packet at time=58.91450594276432
+    10 -> 7  containing: [16, 15, 20, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=59.49523495848664
+    3 -> 1  containing: [3, 4, 4, 0, 9, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=61.06328008951898
+    3 -> 0  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+
+Handling packet at time=61.92171176218045
+    3 -> 1  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 24, 12]
+
+Handling packet at time=63.0156728858187
+    5 -> 2  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 19]
+
+Handling packet at time=63.316932795798756
+    10 -> 7  containing: [16, 15, 17, 13, 12, 18, 8, 7, 10, 18, 0, 1]
+
+Handling packet at time=70.1747319207243
+    5 -> 2  containing: [3, 4, 2, 6, 15, 0, 11, 11, 14, 22, 18, 18]
+
+Handling packet at time=70.9399171454764
+    3 -> 1  containing: [3, 4, 4, 0, 7, 6, 5, 12, 9, 17, 13, 12]
+
+Handling packet at time=78.68663164006867
+    5 -> 2  containing: [3, 4, 2, 6, 7, 0, 11, 11, 14, 22, 18, 18]
+Simulation finished at time t=78.68663164006867
+
+Routing Tables for Custom Network
+E0 | Cost | Next Hop
+---+------+---------
+0  |    0 |        0
+1  |    1 |        1
+2  |    1 |        2
+3  |    3 |        3
+4  |    4 |        1
+5  |    3 |        2
+6  |    8 |        3
+7  |   14 |        2
+8  |   12 |        1
+9  |   20 |        1
+10  |   16 |        1
+11  |   15 |        1
+
+
+E1 | Cost | Next Hop
+---+------+---------
+0  |    1 |        0
+1  |    0 |        1
+2  |    2 |        0
+3  |    4 |        0
+4  |    3 |        4
+5  |    4 |        0
+6  |    7 |        4
+7  |   14 |        4
+8  |   11 |        4
+9  |   19 |        4
+10  |   15 |        4
+11  |   14 |        4
+
+
+E2 | Cost | Next Hop
+---+------+---------
+0  |    1 |        0
+1  |    2 |        0
+2  |    0 |        2
+3  |    4 |        0
+4  |    5 |        0
+5  |    2 |        5
+6  |    9 |        0
+7  |   13 |        5
+8  |   13 |        0
+9  |   21 |        0
+10  |   17 |        0
+11  |   16 |        0
+
+
+E3 | Cost | Next Hop
+---+------+---------
+0  |    3 |        0
+1  |    4 |        0
+2  |    4 |        0
+3  |    0 |        3
+4  |    7 |        0
+5  |    6 |        0
+6  |    5 |        6
+7  |   12 |        6
+8  |    9 |        6
+9  |   17 |        6
+10  |   13 |        6
+11  |   12 |        6
+
+
+E4 | Cost | Next Hop
+---+------+---------
+0  |    4 |        1
+1  |    3 |        1
+2  |    5 |        1
+3  |    7 |        1
+4  |    0 |        4
+5  |    7 |        1
+6  |    4 |        6
+7  |   11 |        6
+8  |    8 |        6
+9  |   16 |        6
+10  |   12 |        6
+11  |   11 |        6
+
+
+E5 | Cost | Next Hop
+---+------+---------
+0  |    3 |        2
+1  |    4 |        2
+2  |    2 |        2
+3  |    6 |        2
+4  |    7 |        2
+5  |    0 |        5
+6  |   11 |        2
+7  |   11 |        7
+8  |   14 |        7
+9  |   22 |        7
+10  |   18 |        7
+11  |   18 |        2
+
+
+E6 | Cost | Next Hop
+---+------+---------
+0  |    8 |        3
+1  |    7 |        4
+2  |    9 |        3
+3  |    5 |        3
+4  |    4 |        4
+5  |   11 |        3
+6  |    0 |        6
+7  |    7 |        8
+8  |    4 |        8
+9  |   12 |        8
+10  |    8 |       11
+11  |    7 |       11
+
+
+E7 | Cost | Next Hop
+---+------+---------
+0  |   14 |        5
+1  |   14 |        8
+2  |   13 |        5
+3  |   12 |        8
+4  |   11 |        8
+5  |   11 |        5
+6  |    7 |        8
+7  |    0 |        7
+8  |    3 |        8
+9  |   11 |        8
+10  |    7 |       10
+11  |    8 |       10
+
+
+E8 | Cost | Next Hop
+---+------+---------
+0  |   12 |        6
+1  |   11 |        6
+2  |   13 |        6
+3  |    9 |        6
+4  |    8 |        6
+5  |   14 |        7
+6  |    4 |        6
+7  |    3 |        7
+8  |    0 |        8
+9  |    8 |        9
+10  |   10 |        7
+11  |   11 |        6
+
+
+E9 | Cost | Next Hop
+---+------+---------
+0  |   20 |        8
+1  |   19 |        8
+2  |   21 |        8
+3  |   17 |        8
+4  |   16 |        8
+5  |   22 |        8
+6  |   12 |        8
+7  |   11 |        8
+8  |    8 |        8
+9  |    0 |        9
+10  |   18 |        8
+11  |   19 |        8
+
+
+E10 | Cost | Next Hop
+---+------+---------
+0  |   16 |       11
+1  |   15 |       11
+2  |   17 |       11
+3  |   13 |       11
+4  |   12 |       11
+5  |   18 |        7
+6  |    8 |       11
+7  |    7 |        7
+8  |   10 |        7
+9  |   18 |        7
+10  |    0 |       10
+11  |    1 |       11
+
+
+E11 | Cost | Next Hop
+---+------+---------
+0  |   15 |        6
+1  |   14 |        6
+2  |   16 |        6
+3  |   12 |        6
+4  |   11 |        6
+5  |   18 |        6
+6  |    7 |        6
+7  |    8 |       10
+8  |   11 |        6
+9  |   19 |        6
+10  |    1 |       10
+11  |    0 |       11
+
+
+Best Forward Next-Hop
+	 [2, 5]
+
+Process finished with exit code 0

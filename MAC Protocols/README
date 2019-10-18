@@ -1,0 +1,17 @@
+William Trace LaCour (WTL6C)
+Justin Vaughn Javier (JTJ5GS)
+Networks - Wireless MAC Protocols
+4/16/19
+
+
+Submitted Files
+
+	1. dataRecordings.xlsx -> all data recorded and graphs for all and neighbors
+
+	2. Graph_1_All.PNG -> Graph of the four MAC protocols using all
+
+	3. Graph_2_Neighbors.PNG -> Graph of the four MAC protocols using neighbors
+
+	4. script.sh -> script used to simply data collection
+
+	5. mac.py -> implementations of the four MAC Protocols, see comments
